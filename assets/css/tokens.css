@@ -1,0 +1,73 @@
+/* ================================================================
+   TOKENS
+   Design variables — colors, typography, spacing.
+   Breakpoints: 1080 / 900 / 720 / 430 / 380.
+   ================================================================ */
+:root {
+  --bg:        #08070a;
+  --bg-2:      #0f0c0a;
+  --surface:   #14110f;
+  --surface-2: #1d1815;
+  --line:      #2a2320;
+  --line-soft: #1d1916;
+
+  --cream:     #f4ead5;
+  --cream-dim: #b6ad9b;
+  --muted:     #6b635a;
+  --gold:      #c9a35a;
+  --gold-deep: #9a7a3c;
+  --red:       #b53030;
+  --red-deep:  #7a1a1a;
+
+  --f-display: 'Anton', 'Helvetica Neue', sans-serif;
+  --f-edit:    'Cormorant Garamond', 'Times New Roman', serif;
+  --f-body:    'Manrope', 'Helvetica Neue', sans-serif;
+  --f-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  --letterbox:  36px;
+  --safe-bottom: 0px;  /* bottom safe clearance, overridden on mobile */
+  --dock-h:     0px;
+  --gutter:     clamp(20px, 5vw, 80px);
+  --pad-y:      clamp(80px, 12vw, 160px);
+
+  /* mobile-only — unused on desktop but harmless */
+  --reel-strip-h: 0px;   /* pinned slate strip inside reel-frame */
+  --bleed:        0px;   /* edge-bleed offset on mobile */
+  --edge-tag-w:  14px;   /* width of the vertical right-edge "R/0X" tag */
+}
+
+@media (max-width: 900px) {
+  :root { --letterbox: 28px; }
+}
+
+@media (max-width: 720px) {
+  :root {
+    /* top safe area (notch / Dynamic Island) baked into letterbox */
+    --letterbox:    calc(22px + env(safe-area-inset-top, 0px));
+    /* bottom safe area (home indicator) for dock + content padding */
+    --safe-bottom:  calc(22px + env(safe-area-inset-bottom, 0px));
+    --dock-h:       72px;
+    --pad-y:        clamp(72px, 16vw, 120px);
+    --gutter:       18px;
+    --reel-strip-h: 34px;
+    --bleed:        18px;
+    --edge-tag-w:   14px;
+  }
+}
+
+@media (max-width: 430px) {
+  :root {
+    --gutter:       14px;
+    --bleed:        14px;
+    --reel-strip-h: 30px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --letterbox:   calc(20px + env(safe-area-inset-top, 0px));
+    --safe-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    --gutter:      12px;
+    --bleed:       12px;
+  }
+}

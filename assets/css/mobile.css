@@ -1,0 +1,617 @@
+/* ================================================================
+   MOBILE
+   Final cascade layer. All ≤720px and ≤430px overrides live here so
+   they win over the per-section files. Desktop is unaffected.
+   ================================================================ */
+
+@media (max-width: 720px) {
+  /* reel-frame: visual viewport for each section */
+  .reel-frame {
+    position: relative;
+    min-height: 100vh;          /* fallback for older iOS */
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .reel-slate {
+    position: sticky;
+    top: var(--letterbox);
+    z-index: 5;
+    height: var(--reel-strip-h);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--gutter);
+    background: linear-gradient(to bottom, rgba(8,7,10,0.92), rgba(8,7,10,0.6));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    pointer-events: none;
+  }
+  .reel-body {
+    flex: 1;
+    padding-bottom: calc(var(--dock-h) + var(--safe-bottom) + 24px);
+  }
+  .reel-edge {
+    position: absolute;
+    top: calc(var(--letterbox) + var(--reel-strip-h) + 16px);
+    right: 4px;
+    width: var(--edge-tag-w);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--gold-deep);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  /* the existing .wrap inside reel-body keeps its max-width */
+
+  /* Outer snap: each reel fills the viewport, snaps to the next */
+  html, body {
+    height: 100vh;               /* fallback for pre-iOS-15.4 */
+    height: 100dvh;
+    overflow: hidden;            /* outer scroll lives on main */
+  }
+  main {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0;            /* dock-h padding now handled by reel-body */
+  }
+  section[data-reel-id] {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 0;                  /* gutter moves to reel-body */
+  }
+  /* HERO already has min-height:100dvh + padding:0 — re-assert for clarity */
+  .hero { min-height: 100vh; min-height: 100dvh; padding: 0; }
+
+  /* per-section gutter now lives on .reel-body */
+  .reel-body {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    padding-top: 8px;
+  }
+  /* sections like .hero have inner .stage that already pads — let it pass */
+  .hero .reel-body { padding-left: 0; padding-right: 0; }
+  .hero .reel-body .stage { padding-left: var(--gutter); padding-right: var(--gutter); }
+  /* contact is text-align: center — preserve that */
+  .contact .reel-body { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+  /* HUD mobile refinements */
+  .hud {
+    padding: 0 12px;
+    padding-top: env(safe-area-inset-top, 0px);
+    border-bottom: 1px solid var(--gold-deep);
+  }
+  /* bottom letterbox grows to cover home-indicator zone */
+  .letterbox.bottom { height: var(--safe-bottom); }
+  /* dock sits just above the safe-area bottom */
+  .dock { bottom: var(--safe-bottom); }
+  .hud .center {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    flex: 1;
+    text-align: center;
+  }
+  .hud .right { font-size: 9px; }
+  .hud .right .reel-counter { margin-left: 6px; font-size: 9px; }
+
+  /* ===== R/01 HERO ===== */
+  .hero .reel-body { display: flex; flex-direction: column; }
+  .hero .stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: calc(var(--letterbox) + var(--reel-strip-h) + 24px);
+    padding-bottom: 20px;
+  }
+  .hero .pre {
+    font-size: 9.5px;
+    letter-spacing: 0.34em;
+    margin-bottom: 22px;
+  }
+  .hero .pre .dash { width: 32px; }
+  .hero h1 {
+    font-size: clamp(52px, 17.5vw, 92px);
+    line-height: 0.84;
+    margin-inline: calc(var(--bleed) * -1);
+    padding-inline: var(--bleed);
+  }
+  .hero h1 .strike::after { height: 4px; }
+  .hero .meta {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 18px;
+  }
+  /* On hero, hide the 2nd and 3rd meta cols at narrow widths — keep Logline only */
+  .hero .meta .col:nth-child(n+2) { display: none; }
+  .hero .meta .col h4 { font-size: 9px; letter-spacing: 0.28em; }
+  .hero .meta .col p  { font-size: 14px; line-height: 1.55; }
+  .hero .meta .col p em { font-size: 16px; }
+  .hero .scroll {
+    bottom: calc(var(--dock-h) + var(--safe-bottom) + 10px);
+    font-size: 8.5px;
+    letter-spacing: 0.32em;
+  }
+  .hero .scroll .line { height: 22px; }
+
+  /* ===== R/02 ABOUT ===== */
+  .about .wrap {
+    padding-top: calc(var(--reel-strip-h) + 14px);
+  }
+  .about .slate { margin-bottom: 22px; }
+  .about .chapter-card {
+    padding: 30px 12px 26px;
+    margin-bottom: 26px;
+    margin-inline: calc(var(--bleed) * -1);
+  }
+  .about .chapter-card .ch-title {
+    font-size: clamp(40px, 12vw, 72px);
+  }
+  .about .grid { gap: 28px; }
+  /* Quote becomes a full-bleed editorial shot */
+  .about .quote {
+    position: relative;
+    font-size: clamp(34px, 9vw, 64px);
+    line-height: 1.06;
+    margin-inline: calc(var(--bleed) * -1);
+    padding: 28px var(--bleed) 24px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(420px 320px at 90% 10%, rgba(181,48,48,0.08), transparent 60%);
+  }
+  .about .quote::before {
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    font-size: 180px;
+    line-height: 1;
+    color: var(--red);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  /* Body prose as stanzas */
+  .about .body p {
+    font-size: 16px;
+    line-height: 1.78;
+    color: var(--cream);
+    margin: 0 0 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .about .body p:last-of-type { border-bottom: none; }
+  /* Stats stacked vertically as poster blocks */
+  .about .stats {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 18px;
+    margin-top: 22px;
+  }
+  .about .stats .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .about .stats .stat:last-child { border-bottom: none; }
+  .about .stats .stat .n { font-size: 56px; line-height: 1; }
+  .about .stats .stat .l { margin-top: 0; font-size: 10px; }
+
+  /* ===== R/03 TIMELINE ===== */
+  .timeline .wrap { padding-top: calc(var(--reel-strip-h) + 14px); }
+  .timeline .chapter-card {
+    padding: 36px 12px 30px;
+    margin-bottom: 32px;
+    margin-inline: calc(var(--bleed) * -1);
+  }
+  .timeline .chapter-card .ch-title {
+    font-size: clamp(48px, 13vw, 96px);
+  }
+  .timeline-block {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 40px 0;
+  }
+  /* Reverse the inline-flex collapse — make years monolithic again */
+  .timeline-block .years {
+    display: block;
+    font-size: clamp(64px, 16vw, 96px);
+    line-height: 0.88;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+  .timeline-block .years br { display: inline; }
+  .timeline-block .years small {
+    display: block;
+    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+  }
+  .timeline-block .body h4 {
+    font-size: clamp(28px, 7vw, 44px);
+    margin-bottom: 14px;
+  }
+  .timeline-block .body p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--cream);
+  }
+  .timeline-block .crafts { gap: 8px; margin-top: 18px; }
+  .timeline-block .crafts span {
+    font-size: 9.5px;
+    padding: 8px 11px;
+    letter-spacing: 0.22em;
+  }
+  .timeline-block .badge {
+    display: flex;
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px 14px;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+  }
+  .timeline-block .badge .star { font-size: 16px; }
+
+  /* ===== R/04 SKILLS — horizontal deck ===== */
+  .skills .wrap { padding-top: calc(var(--reel-strip-h) + 14px); }
+  .skills .heading h2 { font-size: clamp(40px, 11vw, 72px); line-height: 0.92; }
+  .skills .heading p { font-size: 14px; }
+  .skills .heading { margin-bottom: 22px; }
+
+  .deck {
+    margin-inline: calc(var(--bleed) * -1);
+    position: relative;
+  }
+  .deck-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+    background: none;          /* override .depts hairline grid on mobile */
+    border: none;
+  }
+  .deck-track::-webkit-scrollbar { display: none; }
+  .deck-track > * {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 0 var(--bleed);
+  }
+  .deck-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .deck-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .deck-dots span.active {
+    background: var(--gold);
+    transform: scale(1.4);
+  }
+
+  /* Dept shot styling inside the deck */
+  .skills .deck .dept {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 28px 22px 30px;
+    min-height: 60dvh;
+    gap: 18px;
+  }
+  .skills .deck .dept .num { font-size: 64px; color: var(--gold-deep); }
+  .skills .deck .dept h3 { font-size: 36px; }
+  .skills .deck .dept h3 em { font-size: 32px; }
+  .skills .deck .dept ul li { padding: 12px 0; }
+
+  /* ===== R/05 FILMOGRAPHY — horizontal poster deck ===== */
+  .work .wrap { padding-top: calc(var(--reel-strip-h) + 14px); }
+  .work .heading h2 { font-size: clamp(40px, 11vw, 72px); }
+
+  .deck[data-deck="films"] .deck-track {
+    flex-direction: row;       /* override .work .filmography column (higher specificity) */
+    align-items: center;       /* don't stretch cards to full reel height */
+    border-top: none;          /* override .filmography hairline */
+    padding-bottom: 8px;
+  }
+
+  .work .deck .film {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    padding: 0 var(--bleed);
+    display: flex;             /* override grid-template-areas */
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    grid-template-columns: none;
+    grid-template-areas: none;
+    border-bottom: none;
+    background: transparent;
+  }
+  .work .deck .film:hover { padding-left: var(--bleed); background: transparent; }
+
+  /* poster card */
+  .work .deck .film .preview {
+    display: block;
+    position: relative;        /* override absolute hover-preview */
+    order: 9;                  /* always render poster below the metadata */
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    transform: none;
+    opacity: 1;
+    margin: 14px 0 0;
+    border: 1px solid var(--gold-deep);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  }
+  .work .deck .film .preview .reel-thumb { width: 100%; height: 100%; }
+
+  .work .deck .film .no {
+    grid-area: auto;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    margin-bottom: 4px;
+  }
+  .work .deck .film .title {
+    grid-area: auto;
+    font-size: clamp(32px, 9vw, 44px);
+    padding-top: 0;
+    display: block;
+    margin: 0 0 6px;
+  }
+  .work .deck .film .role {
+    grid-area: auto;
+    font-size: 14px;
+    padding-top: 0;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .work .deck .film .year,
+  .work .deck .film .runtime {
+    grid-area: auto;
+    font-size: 10px;
+    display: inline-block;
+    margin-right: 14px;
+  }
+  .work .deck .film .arrow {
+    display: none;             /* posters tap to open lightbox; arrow unneeded */
+  }
+
+  /* ===== AI GALLERY (inside R/05) — single-column contact sheet ===== */
+  .gallery { margin-top: 56px; }
+  .gallery .head h3 { font-size: clamp(34px, 9vw, 56px); }
+  .gallery .head .tools span { font-size: 9px; letter-spacing: 0.16em; }
+  .tabs {
+    position: sticky;
+    top: calc(var(--letterbox) + var(--reel-strip-h));
+    z-index: 4;
+    background: linear-gradient(to bottom, rgba(8,7,10,0.95), rgba(8,7,10,0.85));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding-top: 10px;
+    margin-inline: calc(var(--bleed) * -1);
+    padding-inline: var(--bleed);
+  }
+  .tabs .tab {
+    flex: 1 1 auto;
+    font-size: 10px;
+    padding: 11px 10px;
+    letter-spacing: 0.22em;
+  }
+  .masonry {
+    columns: auto;
+    column-count: 1;
+    column-gap: 0;
+    margin-inline: calc(var(--bleed) * -1);
+  }
+  .masonry .tile {
+    width: 100%;
+    margin-bottom: 12px;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .masonry .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.95) contrast(1.05);
+  }
+  .masonry .tile .meta-tag {
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    padding: 6px 9px;
+  }
+
+  /* visual hint to the user that swipe switches category */
+  .gallery .masonry::after {
+    content: "← swipe to switch category →";
+    display: block;
+    margin: 14px 0 4px;
+    text-align: center;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ===== R/06 SERVICES ===== */
+  .services .wrap { padding-top: calc(var(--reel-strip-h) + 14px); }
+  .services .head { margin-bottom: 24px; }
+  .services h2 { font-size: clamp(40px, 12vw, 72px); max-width: none; }
+  .services p.lead { font-size: 14px; }
+  .marquee-list { margin-top: 18px; border-top: 1px solid var(--line); }
+
+  .svc {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "num     name"
+      "deliver deliver";
+    gap: 4px 14px;
+    padding: 20px 2px 22px;
+    align-items: baseline;
+  }
+  .svc .num { grid-area: num; font-size: 10px; letter-spacing: 0.28em; align-self: center; }
+  .svc .name {
+    grid-area: name;
+    white-space: normal;
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 0.96;
+  }
+  .svc .deliver {
+    grid-area: deliver;
+    text-align: left;
+    max-width: 100%;
+    padding-top: 6px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cream-dim);
+  }
+  /* tap interaction — replace hover with :active */
+  .svc:active .name {
+    color: var(--gold);
+    transform: translateX(8px);
+  }
+  .svc:active::after { right: 0; }
+
+  /* ===== R/07 CONTACT / END CREDITS ===== */
+  .contact { padding: 0; }
+  .contact .wrap {
+    padding-top: calc(var(--letterbox) + var(--reel-strip-h) + 28px);
+    padding-bottom: calc(var(--dock-h) + var(--safe-bottom) + 28px);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact .chapter-card {
+    padding: 30px 12px 26px;
+    margin-bottom: 22px;
+    margin-inline: calc(var(--bleed) * -1);
+  }
+  .contact .chapter-card .ch-title {
+    font-size: clamp(44px, 12vw, 80px);
+  }
+  .contact h2 { font-size: clamp(54px, 16vw, 110px); line-height: 0.92; }
+  .contact .small { font-size: 9px; margin: 18px 0 8px; }
+
+  .contact .email {
+    display: block;
+    margin-top: 22px;
+    font-size: clamp(22px, 7vw, 36px);
+    line-height: 1.1;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gold-deep);
+    word-break: break-all;
+  }
+  .contact .email::before {
+    content: "▶ ";
+    color: var(--red);
+    font-size: 0.7em;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .credits {
+    margin-top: 36px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 20px;
+    text-align: left;
+  }
+  .credits .col {
+    padding: 14px 0;
+    border-top: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .credits .col:first-child { border-top: none; }
+  .credits .col h5 {
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 0.32em;
+  }
+  .credits .col h5::after {
+    content: " ━━━";
+    color: var(--gold-deep);
+    letter-spacing: 0;
+  }
+  .credits .col a, .credits .col p { font-size: 16px; }
+
+  .fin {
+    margin-top: 38px;
+    font-size: clamp(72px, 18vw, 120px);
+    letter-spacing: 0.32em;
+    text-align: center;
+  }
+  .fin .dot { color: var(--red); animation: finDot 1.6s infinite; }
+  .fin .dot:nth-child(2) { animation-delay: 0.4s; }
+  @keyframes finDot {
+    0%, 60%, 100% { opacity: 0.45; }
+    20%, 40%      { opacity: 1; }
+  }
+  .colophon {
+    margin-top: 16px;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* mobile-shell visuals */
+  .reel-cut-flash {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease-out;
+  }
+  .reel-cut-flash.on { opacity: 0.55; }
+
+  /* Tap-pulse — quick gold-tinted ack on touch */
+  .tap {
+    transition: transform 0.12s ease-out, background-color 0.12s ease-out;
+  }
+  .dept.tap, .svc.tap, .stat.tap, .film.tap, .tile.tap {
+    transform: scale(0.985);
+    background-color: rgba(201, 163, 90, 0.06);
+  }
+}
+
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+  main { scroll-snap-type: y proximity; }
+  section[data-reel-id] { scroll-snap-stop: normal; }
+}
+
+@media (max-width: 430px) {
+  .hud .center { display: none; }  /* too cramped at narrow widths */
+  .hud .right { font-size: 8.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-cut-flash, .reel-cut-flash.on { display: none; }
+  .tap { transition: none; transform: none; background-color: transparent; }
+}
