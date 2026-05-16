@@ -1,376 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">
-        <img
-          class="logo-img"
-          src="./images/Digital-Signature-fill.png"
-          alt=""
-        />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#08070a" />
+  <meta name="description" content="Purushottam Miriyala — Telugu filmmaker, writer, associate director, and AI visual artist. Five years of beautiful chaos, in 24 frames per second." />
+  <title>Purushottam Miriyala — Filmmaker / Writer / AI Artist</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles — base layer -->
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/effects.css" />
+  <link rel="stylesheet" href="assets/css/chrome.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+
+  <!-- Styles — section layer -->
+  <link rel="stylesheet" href="assets/css/sections/hero.css" />
+  <link rel="stylesheet" href="assets/css/sections/about.css" />
+  <link rel="stylesheet" href="assets/css/sections/timeline.css" />
+  <link rel="stylesheet" href="assets/css/sections/skills.css" />
+  <link rel="stylesheet" href="assets/css/sections/work.css" />
+  <link rel="stylesheet" href="assets/css/sections/gallery.css" />
+  <link rel="stylesheet" href="assets/css/sections/services.css" />
+  <link rel="stylesheet" href="assets/css/sections/contact.css" />
+
+  <!-- Mobile cascade (must be last) -->
+  <link rel="stylesheet" href="assets/css/mobile.css" />
+
+  <!-- Behaviour — ES module entry -->
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- ================================================================
+       OVERLAYS
+       ================================================================ -->
+  <div class="grain"     aria-hidden="true"></div>
+  <div class="vignette"  aria-hidden="true"></div>
+  <div class="letterbox top"    aria-hidden="true"></div>
+  <div class="letterbox bottom" aria-hidden="true"></div>
+
+  <div class="cursor"     aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ================================================================
+       SLATE-CLAP INTRO
+       ================================================================ -->
+  <div class="slate-clap" id="slate">
+    <div class="board">
+      <div class="stripes"></div>
+      <div class="grid-info">
+        <div>Production<b>PURUSHOTTAM MIRIYALA</b></div>
+        <div>Director<b>SELF / 2026</b></div>
+        <div>Reel<b>PORTFOLIO 01</b></div>
       </div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">
-        <img
-          class="logo-img-small"
-          src="./images/Digital-Signature-fill.png"
-          alt=""
-        />
-      </div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img
-          src="./images/cropped_image.png"
-          alt="Purushottam Miriyala profile picture"
-        />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Purushottam Miriyala</h1>
-        <p class="section__text__p2">Writer, Assitant director, AI artist</p>
-        <div class="btn-container">
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <!-- <div id="socials-container">
-          <img
-            src="./images/insta.png"
-            alt="My insta profile"
-            class="icon"
-            onclick="location.href='https://www.instagram.com/the_writer__soul?igsh=MXV1Y3FrZWR0bTJkNQ%3D%3D&utm_source=qr'"
-          />
-        </div> -->
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./images/about_pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="about-me-details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Writer / Assitant Director</h3>
-              <p>
-                Been a theatre writer for 3 years<br />Working as an assitant
-                director since 2 years
-              </p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>AI Artist</h3>
-              <p>1+ years experience</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              I am an aspiring filmmaker currently working as an assistant
-              director, bringing creative visions to life on screen. In addition
-              to my work in film, I specialize in AI image designing, merging
-              technology with artistry to create captivating visuals. I have
-              taken an unconventional path to pursue my passion for storytelling
-              and innovation, continually pushing the boundaries of what’s
-              possible in both film and digital art.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Work Table</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Writing</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./images/celtx.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Celtx</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img src="./images/fd.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Final Draft</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img src="./images/fi.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Fadein</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./images/Kit Scenarist.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Kit Scenarist</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">AI Artist / Editing</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./images/Midjourney-Round-Logo-PNG_1.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Midjourney</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./images/chatGpt.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>DALL E</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./images/adobe-photoshop.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Photoshop</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./images/affinity.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Affinty Photo</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img src="./images/pr.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3>Adobe Premiere Pro</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./images/davincy.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Davince Resolve</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My</p>
-      <h1 class="title">Canvas</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./Pages//image/Landscapes/1.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Landscapes</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='./Pages/imagesSlider.html?id=Landscapes'"
-              >
-                View more
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./Pages/image/Cinematic/1.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Cinematic</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='./Pages/imagesSlider.html?id=Cinematic'"
-              >
-                View more
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./Pages/image/Characters/1.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Characters</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='./Pages/imagesSlider.html?id=Characters'"
-              >
-                View more
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p>
-            <a href="mailto:ursstoryteller@gmail.com"
-              >ursstoryteller@gmail.com</a
-            >
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./images/insta.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p>
-            <a
-              href="https://www.instagram.com/the_writer__soul?igsh=MXV1Y3FrZWR0bTJkNQ%3D%3D&utm_source=qr"
-              >Instagram</a
-            >
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./images/dial.png"
-            alt="dial icon"
-            class="icon contact-icon email-icon"
-          />
-          <a href="tel:+918499055995">+91 8499055995</a>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+      <div class="title">SCENE 01 — <em>opening shot</em></div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       TOP HUD
+       ================================================================ -->
+  <header class="hud">
+    <div class="rec">REC</div>
+    <div class="center">PURUSHOTTAM MIRIYALA — A FILMMAKER'S PORTFOLIO</div>
+    <div class="right">
+      <span class="timecode" id="tc">00:00:00:00</span> · 24FPS
+      <span class="reel-counter" id="reelCounter" aria-live="polite">· R/01 OF 07</span>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       SIDE REEL RAIL (desktop)
+       ================================================================ -->
+  <nav class="reel-rail" aria-label="Reels">
+    <a href="#hero"     data-reel><span class="tick"></span><span>R/01</span></a>
+    <a href="#about"    data-reel><span class="tick"></span><span>R/02</span></a>
+    <a href="#timeline" data-reel><span class="tick"></span><span>R/03</span></a>
+    <a href="#skills"   data-reel><span class="tick"></span><span>R/04</span></a>
+    <a href="#work"     data-reel><span class="tick"></span><span>R/05</span></a>
+    <a href="#services" data-reel><span class="tick"></span><span>R/06</span></a>
+    <a href="#contact"  data-reel><span class="tick"></span><span>R/07</span></a>
+  </nav>
+
+  <!-- ================================================================
+       BOTTOM MOBILE DOCK — filmstrip mini-rail
+       ================================================================ -->
+  <div class="dock" aria-hidden="false">
+    <div class="dock-row top">
+      <span class="reel-tag" id="dockReel">R/01</span>
+      <span class="dock-title" id="dockTitle">OPENING TITLES</span>
+      <a class="cta" href="mailto:ursstoryteller@gmail.com">Roll the Scene</a>
+    </div>
+    <div class="dock-row bottom">
+      <div class="progress" aria-hidden="true"></div>
+      <nav class="dock-ticks" aria-label="Jump to reel">
+        <a href="#hero"     data-tick="01"><span></span></a>
+        <a href="#about"    data-tick="02"><span></span></a>
+        <a href="#timeline" data-tick="03"><span></span></a>
+        <a href="#skills"   data-tick="04"><span></span></a>
+        <a href="#work"     data-tick="05"><span></span></a>
+        <a href="#services" data-tick="06"><span></span></a>
+        <a href="#contact"  data-tick="07"><span></span></a>
       </nav>
-      <p>Copyright &#169; 2023 Purushottam Miriyala. All Rights Reserved.</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ================================================================
+         REEL 01 — HERO
+         ================================================================ -->
+    <section class="hero" id="hero" data-reel-id="01" data-reel-label="R/01" data-reel-title="OPENING TITLES">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/01 · OPENING TITLES</div>
+        <div class="reel-body">
+          <div class="stage">
+            <div class="pre reveal in">
+              <span class="dash"></span>
+              <span>NOW SHOWING — REEL 01 / OPENING TITLES</span>
+            </div>
+
+            <h1>
+              <span class="row reveal in delay-1">PURUSHOTTAM</span>
+              <span class="row reveal in delay-2"><em>Miriyala</em></span>
+              <span class="row reveal in delay-3"><span class="strike">FILMMAKER</span></span>
+            </h1>
+
+            <div class="meta">
+              <div class="col reveal delay-3">
+                <h4>Logline</h4>
+                <p>Telugu storyteller crafting cinema across the page, the set, and the prompt — <em>five years deep</em>, still chasing the perfect frame.</p>
+              </div>
+              <div class="col reveal delay-4">
+                <h4>Credits</h4>
+                <p>Theatre Artist · Writer · Assistant Director · Associate Director · AI Visual Artist</p>
+              </div>
+              <div class="col reveal delay-5">
+                <h4>Now Casting</h4>
+                <p>Feature scripts, second-unit direction, and AI-driven concept art for future features.</p>
+              </div>
+            </div>
+          </div>
+
+          <a class="scroll" href="#about" aria-label="Scroll to next reel">
+            <span>Scroll · Cue Reel 02</span>
+            <span class="line"></span>
+          </a>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/01</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 02 — ABOUT
+         ================================================================ -->
+    <section class="about" id="about" data-reel-id="02" data-reel-label="R/02" data-reel-title="THE WRITER">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/02 · THE WRITER</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="slate reveal">
+              <span class="num">REEL 02</span>
+              <span>SCENE — INT. STUDY · NIGHT</span>
+              <span class="bar"></span>
+              <span class="scene">THE WRITER</span>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter One</div>
+              <h2 class="ch-title">The Man Behind <em>the Frame</em></h2>
+              <div class="ch-tag">— in which our subject confesses to writing scripts at 2 a.m.</div>
+            </div>
+
+            <div class="grid">
+              <div class="quote reveal">
+                Every frame is a <span class="gold">sentence.</span> Every cut, a comma. I write films with one hand and dream them with the other.
+              </div>
+
+              <div class="body">
+                <p class="reveal delay-1">
+                  <strong>Purushottam</strong> is a Telugu filmmaker working at the intersection of classical screenwriting and emerging visual technology. Five years on set as Assistant and Associate Director have taught him the rhythm of a 100-day shoot; five years at the page have taught him the rhythm of a single line of dialogue.
+                </p>
+                <p class="reveal delay-2">
+                  Today he splits his hours between <strong>FadeIn</strong> drafts, location scouts, and a second monitor stacked with Midjourney boards — translating script beats into moodboards, posters, and look-development frames before the camera ever rolls.
+                </p>
+                <p class="reveal delay-3">
+                  Based in Hyderabad. Available worldwide. Speaks Telugu, Hindi, English — and the universal grammar of a good close-up.
+                </p>
+
+                <div class="stats">
+                  <div class="stat reveal delay-2">
+                    <div class="n">05</div>
+                    <div class="l">Years On Set</div>
+                  </div>
+                  <div class="stat reveal delay-3">
+                    <div class="n">2</div>
+                    <div class="l">Productions</div>
+                  </div>
+                  <div class="stat reveal delay-4">
+                    <div class="n">∞</div>
+                    <div class="l">Frames Imagined</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/02</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 03 — TIMELINE
+         ================================================================ -->
+    <section class="timeline" id="timeline" data-reel-id="03" data-reel-label="R/03" data-reel-title="THE LONG ROAD">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/03 · THE LONG ROAD</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="slate reveal">
+              <span class="num">REEL 03</span>
+              <span>SCENE — INT./EXT. BEFORE THE CAMERAS</span>
+              <span class="bar"></span>
+              <span class="scene">THE LONG ROAD</span>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Two</div>
+              <h2 class="ch-title">Before the Reel, <em>the Stage.</em></h2>
+              <div class="ch-tag">— in which a college kid first learns to bleed for an audience.</div>
+            </div>
+
+            <div class="timeline-block reveal">
+              <div class="years">
+                2019<br />—<br />2022
+                <small>The Origin Story</small>
+              </div>
+              <div class="body">
+                <h4>Three years <em>under hot lights.</em></h4>
+                <p>Before the call sheets and the second monitors, there were wooden floorboards, a single spotlight, and the smell of greasepaint. <strong>Theatre is where the storytelling instincts were born</strong> — the timing, the silence, the long-held look that lasts a beat too long on purpose.</p>
+                <p>Through college, Purushottam wrote, performed, and helped stage <strong>stage plays, mime, musical plays, and street plays</strong> — dragging the same character from a black-box auditorium to a busy intersection in a single weekend.</p>
+
+                <div class="crafts">
+                  <span class="hot">Stage Plays</span>
+                  <span class="hot">Mime</span>
+                  <span class="hot">Musical Plays</span>
+                  <span class="hot">Street Plays</span>
+                  <span>Direction</span>
+                  <span>Writing</span>
+                  <span>Performance</span>
+                </div>
+
+                <div class="badge">
+                  <span class="star">★</span>
+                  5th Place · National Theatre Competition · Representing College
+                </div>
+              </div>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Three</div>
+              <h2 class="ch-title">Five Years of <em>Beautiful Chaos.</em></h2>
+              <div class="ch-tag">— in which our hero swaps the spotlight for the slate.</div>
+            </div>
+
+            <div class="timeline-block reveal">
+              <div class="years">
+                2022<br />—<br />NOW
+                <small>The Industry Years</small>
+              </div>
+              <div class="body">
+                <h4>From the floor <em>to the cut room.</em></h4>
+                <p>Five years on commercial Telugu film sets — <strong>Assistant Director</strong> on the floor, <strong>Associate Director</strong> on the second unit. Call sheets, blocking, continuity, coverage, and the brutal arithmetic of a 100-day shoot.</p>
+                <p>In the same window, a parallel discipline took shape — feature drafts and series outlines on FadeIn at 2 a.m. And, most recently, AI-driven concept art built around the scripts themselves.</p>
+
+                <div class="crafts">
+                  <span class="hot">Assistant Direction</span>
+                  <span class="hot">Associate Direction</span>
+                  <span class="hot">Screenwriting</span>
+                  <span>2nd Unit</span>
+                  <span>Continuity</span>
+                  <span>Concept Art</span>
+                  <span>Pre-Vis</span>
+                </div>
+
+                <div class="badge">
+                  <span class="star">★</span>
+                  2 Productions · Hyderabad · 2022 — Present
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/03</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 04 — SKILLS
+         ================================================================ -->
+    <section class="skills" id="skills" data-reel-id="04" data-reel-label="R/04" data-reel-title="THE TOOLBOX">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/04 · THE TOOLBOX</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="slate reveal">
+              <span class="num">REEL 04</span>
+              <span>SCENE — CREW &amp; INSTRUMENTS</span>
+              <span class="bar"></span>
+              <span class="scene">THE TOOLBOX</span>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Four</div>
+              <h2 class="ch-title">The <em>Weapons</em> He Carries.</h2>
+              <div class="ch-tag">— every craftsman has a kit. Here's what's in the bag.</div>
+            </div>
+
+            <div class="heading">
+              <h2 class="reveal">The <em>departments</em><br />I run</h2>
+              <p class="reveal delay-1">Three crews. One filmmaker. The page, the set, and the prompt — each its own discipline, each its own lens.</p>
+            </div>
+
+            <div class="deck" data-deck="depts">
+              <div class="depts deck-track">
+                <div class="dept reveal">
+                  <div class="top">
+                    <div class="num">01</div>
+                    <div class="role">Writing Dept.</div>
+                  </div>
+                  <h3>The <em>script</em></h3>
+                  <p>From logline to final draft — feature screenplays, episodic outlines, and shot-listed treatments in Telugu and English.</p>
+                  <ul>
+                    <li><span>FadeIn Pro</span><span>★★★★★</span></li>
+                    <li><span>Celtx</span><span>★★★★☆</span></li>
+                    <li><span>Final Draft</span><span>★★★★☆</span></li>
+                    <li><span>Story Structure</span><span>★★★★★</span></li>
+                  </ul>
+                </div>
+
+                <div class="dept reveal delay-1">
+                  <div class="top">
+                    <div class="num">02</div>
+                    <div class="role">Direction Dept.</div>
+                  </div>
+                  <h3>The <em>set</em></h3>
+                  <p>Five years as Assistant and Associate Director — call sheets to cut points, blocking to second-unit coverage on commercial features.</p>
+                  <ul>
+                    <li><span>Assistant Direction</span><span>★★★★★</span></li>
+                    <li><span>Associate Direction</span><span>★★★★☆</span></li>
+                    <li><span>On-Set Coverage</span><span>★★★★★</span></li>
+                    <li><span>Continuity / Script</span><span>★★★★☆</span></li>
+                  </ul>
+                </div>
+
+                <div class="dept reveal delay-2">
+                  <div class="top">
+                    <div class="num">03</div>
+                    <div class="role">AI Art Dept.</div>
+                  </div>
+                  <h3>The <em>prompt</em></h3>
+                  <p>Concept art, key visuals, posters and pre-vis frames generated and art-directed through next-gen models.</p>
+                  <ul>
+                    <li><span>Midjourney v7</span><span>★★★★★</span></li>
+                    <li><span>Google Gemini</span><span>★★★★☆</span></li>
+                    <li><span>Grok Imagine</span><span>★★★★☆</span></li>
+                    <li><span>Photoshop / Comp</span><span>★★★★☆</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="deck-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/04</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 05 — WORK / FILMOGRAPHY + AI GALLERY
+         ================================================================ -->
+    <section class="work" id="work" data-reel-id="05" data-reel-label="R/05" data-reel-title="FILMOGRAPHY">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/05 · FILMOGRAPHY</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="slate reveal">
+              <span class="num">REEL 05</span>
+              <span>SCENE — SELECTED WORKS</span>
+              <span class="bar"></span>
+              <span class="scene">FILMOGRAPHY &amp; GALLERY</span>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Five</div>
+              <h2 class="ch-title">Proof of <em>Damage.</em></h2>
+              <div class="ch-tag">— receipts, in 24 frames per second.</div>
+            </div>
+
+            <div class="heading">
+              <h2 class="reveal">Selected <em>filmography</em></h2>
+              <p class="mono reveal delay-1">03 ENTRIES · 2023 — 2026</p>
+            </div>
+
+            <div class="deck" data-deck="films">
+              <div class="filmography deck-track">
+                <a class="film reveal" href="#" data-hover>
+                  <div class="no">F/01</div>
+                  <div class="title">SHABARA</div>
+                  <div class="role">Writer . Associate Director</div>
+                  <div class="year">2026</div>
+                  <div class="runtime">142 MIN</div>
+                  <div class="arrow">→</div>
+                  <div class="preview"><div class="reel-thumb"><div class="label">REEL · 16:9 · ANDHAKAARAM</div></div></div>
+                </a>
+
+                <a class="film reveal delay-1" href="#" data-hover>
+                  <div class="no">F/02</div>
+                  <div class="title">Guns &amp; Roses</div>
+                  <div class="role">Writer . Associate Director</div>
+                  <div class="year">2024</div>
+                  <div class="runtime">128 MIN</div>
+                  <div class="arrow">→</div>
+                  <div class="preview"><div class="reel-thumb"><div class="label">REEL · 16:9 · KAALAM AAGI</div></div></div>
+                </a>
+
+                <a class="film reveal delay-2" href="#" data-hover>
+                  <div class="no">F/03</div>
+                  <div class="title">The Criminals</div>
+                  <div class="role">Writer . Director . Producer</div>
+                  <div class="year">2023</div>
+                  <div class="runtime">119 MIN</div>
+                  <div class="arrow">→</div>
+                  <div class="preview"><div class="reel-thumb"><div class="label">REEL · 16:9 · VENNELA PADAM</div></div></div>
+                </a>
+              </div>
+              <div class="deck-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <!-- AI ART GALLERY -->
+            <div class="gallery">
+              <div class="head">
+                <h3 class="reveal">AI <em>visions</em></h3>
+                <div class="tools reveal delay-1">
+                  <span><b>MIDJOURNEY</b> · v7</span>
+                  <span><b>GEMINI</b> · 2.5 Image</span>
+                  <span><b>GROK</b> · Imagine</span>
+                </div>
+              </div>
+
+              <div class="tabs reveal" role="tablist" aria-label="AI art categories">
+                <button class="tab active" data-cat="Characters" role="tab" aria-selected="true"  data-hover>Characters</button>
+                <button class="tab"        data-cat="Cinematic"  role="tab" aria-selected="false" data-hover>Cinematic</button>
+                <button class="tab"        data-cat="Landscapes" role="tab" aria-selected="false" data-hover>Landscapes</button>
+                <span class="tab-count" id="tabCount">— loading —</span>
+              </div>
+
+              <div class="masonry reveal" id="galleryGrid" aria-live="polite">
+                <div class="gallery-state">Loading reels from /Pages/image …</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/05</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 06 — SERVICES
+         ================================================================ -->
+    <section class="services" id="services" data-reel-id="06" data-reel-label="R/06" data-reel-title="SERVICES">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/06 · SERVICES</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="slate reveal">
+              <span class="num">REEL 06</span>
+              <span>SCENE — WHAT'S ON OFFER</span>
+              <span class="bar"></span>
+              <span class="scene">SERVICES</span>
+            </div>
+
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Six</div>
+              <h2 class="ch-title">Hire the <em>Whole Damn Crew.</em></h2>
+              <div class="ch-tag">— one chair, every department, no overtime drama.</div>
+            </div>
+
+            <div class="head">
+              <h2 class="reveal">Hire the <em>whole crew</em>, in one chair.</h2>
+              <p class="lead reveal delay-1">From a single rewrite to a full pre-production package — every service is delivered with a director's eye and a writer's patience.</p>
+            </div>
+
+            <div class="marquee-list">
+              <a class="svc reveal" href="#contact">
+                <div class="num">SVC / 01</div>
+                <div class="name">Screenwriting</div>
+                <div class="deliver">Feature · Short · Series Bible</div>
+              </a>
+              <a class="svc reveal delay-1" href="#contact">
+                <div class="num">SVC / 02</div>
+                <div class="name">Script <em>consulting</em></div>
+                <div class="deliver">Coverage · Punch-up · Polish</div>
+              </a>
+              <a class="svc reveal delay-2" href="#contact">
+                <div class="num">SVC / 03</div>
+                <div class="name">Assistant Direction</div>
+                <div class="deliver">Floor · 2nd Unit · Continuity</div>
+              </a>
+              <a class="svc reveal delay-1" href="#contact">
+                <div class="num">SVC / 04</div>
+                <div class="name">Associate Direction</div>
+                <div class="deliver">Departmental Lead · On-Set</div>
+              </a>
+              <a class="svc reveal delay-2" href="#contact">
+                <div class="num">SVC / 05</div>
+                <div class="name">AI Concept Art</div>
+                <div class="deliver">Posters · Moodboards · Key Frames</div>
+              </a>
+              <a class="svc reveal delay-3" href="#contact">
+                <div class="num">SVC / 06</div>
+                <div class="name">Pre-vis &amp; Pitch Decks</div>
+                <div class="deliver">Visual Treatments · Pitch Bibles</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/06</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REEL 07 — CONTACT / END CREDITS
+         ================================================================ -->
+    <section class="contact" id="contact" data-reel-id="07" data-reel-label="R/07" data-reel-title="END CREDITS">
+      <div class="reel-frame">
+        <div class="reel-slate" aria-hidden="true">R/07 · END CREDITS</div>
+        <div class="reel-body">
+          <div class="wrap">
+            <div class="chapter-card reveal">
+              <div class="ch-num">Chapter Seven</div>
+              <h2 class="ch-title">You Know <em>Where to Find Me.</em></h2>
+              <div class="ch-tag">— last reel. Roll the credits, and call.</div>
+            </div>
+
+            <div class="small reveal">REEL 07 — END CREDITS . LIGHTS ON</div>
+            <h2 class="reveal delay-1">Roll the <em>next</em><br />scene with me.</h2>
+            <a class="email reveal delay-2" href="mailto:ursstoryteller@gmail.com">ursstoryteller@gmail.com</a>
+
+            <div class="credits">
+              <div class="col reveal">
+                <h5>Studio</h5>
+                <p>Hyderabad, IN</p>
+                <p>+91 · 8499055995</p>
+              </div>
+              <div class="col reveal delay-1">
+                <h5>Find me</h5>
+                <a href="#">Instagram ↗</a>
+                <a href="#">Letterboxd ↗</a>
+                <a href="#">LinkedIn ↗</a>
+              </div>
+              <div class="col reveal delay-2">
+                <h5>Available For</h5>
+                <p>Features · Series</p>
+                <p>Brand Films · AI Campaigns</p>
+              </div>
+            </div>
+
+            <div class="fin reveal delay-3">F<span class="dot">·</span>I<span class="dot">·</span>N</div>
+            <div class="colophon reveal delay-4">© 2026 Purushottam Miriyala · Shot in Hyderabad · Cut in solitude · 2.39 : 1</div>
+          </div>
+        </div>
+        <div class="reel-edge" aria-hidden="true">R/07</div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
 </html>
