@@ -1,0 +1,178 @@
+/* ================================================================
+   REEL 05 — WORK / FILMOGRAPHY
+   Rows on desktop, cards on mobile (grid-template-areas).
+   ================================================================ */
+.work .heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+.work h2 {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 8vw, 110px);
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.work h2 em {
+  font-family: var(--f-edit);
+  font-style: italic;
+  color: var(--gold);
+  text-transform: none;
+  font-weight: 500;
+}
+
+.work .filmography {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.film {
+  display: grid;
+  grid-template-columns: 60px 1fr 1.4fr 130px 100px 40px;
+  gap: 24px;
+  align-items: center;
+  padding: 26px 8px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background 0.4s, padding 0.4s;
+}
+.film:hover {
+  background: rgba(201, 163, 90, 0.04);
+  padding-left: 28px;
+}
+
+.film .no {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}
+.film .title {
+  font-family: var(--f-display);
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--cream);
+  transition: color 0.3s;
+}
+.film:hover .title { color: var(--gold); }
+
+.film .role {
+  font-family: var(--f-edit);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream-dim);
+}
+.film .year,
+.film .runtime {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--cream-dim);
+}
+.film .arrow {
+  font-family: var(--f-display);
+  font-size: 24px;
+  color: var(--cream-dim);
+  transition: transform 0.3s, color 0.3s;
+  justify-self: end;
+}
+.film:hover .arrow {
+  color: var(--gold);
+  transform: translateX(8px);
+}
+
+/* hover preview thumbnail */
+.film .preview {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translate(20px, -50%) scale(0.9);
+  width: 280px;
+  aspect-ratio: 16/9;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  border: 1px solid var(--gold-deep);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  z-index: 5;
+}
+.film:hover .preview {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+/* SVG film placeholder */
+.reel-thumb {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background:
+    linear-gradient(135deg, rgba(201, 163, 90, 0.18), rgba(181, 48, 48, 0.22)),
+    var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+.reel-thumb::before,
+.reel-thumb::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: repeating-linear-gradient(to right, #000 0 8px, transparent 8px 18px);
+}
+.reel-thumb::before { top: 0; }
+.reel-thumb::after  { bottom: 0; }
+.reel-thumb .label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(244, 234, 213, 0.5);
+  text-transform: uppercase;
+}
+
+/* Mobile: rows → cards via grid-template-areas */
+@media (max-width: 900px) {
+  .work .heading { margin-bottom: 40px; }
+  .film {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "no       year     arrow"
+      "title    title    title"
+      "role     role     role"
+      "runtime  runtime  runtime";
+    gap: 6px 14px;
+    padding: 26px 6px;
+    align-items: baseline;
+  }
+  .film .no      { grid-area: no; }
+  .film .year    { grid-area: year; justify-self: end; align-self: center; }
+  .film .arrow   { grid-area: arrow; align-self: center; }
+  .film .title   { grid-area: title; padding-top: 8px; }
+  .film .role    { grid-area: role; font-size: 16px; padding-top: 2px; }
+  .film .runtime { grid-area: runtime; padding-top: 4px; opacity: 0.7; }
+  .film .preview { display: none; }
+  .film:hover { padding-left: 14px; background: transparent; }
+}
+@media (max-width: 720px) {
+  .film { padding: 22px 4px; }
+  .film .title { font-size: 28px; padding-top: 6px; }
+  .film .role  { font-size: 15px; }
+  .film .no,
+  .film .year,
+  .film .runtime { font-size: 10px; letter-spacing: 0.18em; }
+  .film .arrow { font-size: 20px; }
+}

@@ -1,0 +1,82 @@
+/* ================================================================
+   REEL 02 — ABOUT
+   ================================================================ */
+.about {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(20, 17, 15, 0.7) 30%,
+    transparent
+  );
+}
+
+.about .grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about .quote {
+  font-family: var(--f-edit);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(28px, 4.6vw, 64px);
+  line-height: 1.05;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.about .quote .gold { color: var(--gold); }
+.about .quote::before {
+  content: "❝";
+  font-family: var(--f-edit);
+  color: var(--red);
+  font-style: normal;
+  font-size: 0.85em;
+  line-height: 0.5;
+  margin-right: 0.05em;
+  vertical-align: -0.15em;
+}
+
+.about .body p {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--cream-dim);
+  max-width: 54ch;
+}
+.about .body p strong { color: var(--cream); font-weight: 600; }
+
+.about .stats {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.about .stats .stat .n {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 6vw, 56px);
+  line-height: 1;
+  color: var(--gold);
+}
+.about .stats .stat .l {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .about .grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 720px) {
+  .about .body p { font-size: 14.5px; line-height: 1.65; }
+  .about .stats { gap: 14px; padding-top: 22px; margin-top: 28px; }
+  .about .stats .stat .n { font-size: 38px; }
+  .about .stats .stat .l { font-size: 9px; letter-spacing: 0.2em; }
+}

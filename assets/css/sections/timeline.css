@@ -1,0 +1,135 @@
+/* ================================================================
+   REEL 03 — TIMELINE (theatre + film origin)
+   ================================================================ */
+.timeline {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline-block {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  padding: 64px 0;
+  border-bottom: 1px dashed var(--line);
+  align-items: start;
+}
+.timeline-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeline-block .years {
+  font-family: var(--f-display);
+  font-size: clamp(58px, 8vw, 120px);
+  line-height: 0.85;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+.timeline-block .years small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--cream-dim);
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+.timeline-block .body h4 {
+  font-family: var(--f-display);
+  font-size: clamp(28px, 4.6vw, 60px);
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0 0 18px;
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+.timeline-block .body h4 em {
+  font-family: var(--f-edit);
+  font-style: italic;
+  color: var(--gold);
+  text-transform: none;
+  font-weight: 500;
+}
+.timeline-block .body p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--cream-dim);
+  max-width: 54ch;
+  margin: 0 0 14px;
+}
+.timeline-block .body p strong { color: var(--cream); font-weight: 600; }
+
+.timeline-block .crafts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.timeline-block .crafts span {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  color: var(--cream-dim);
+  background: rgba(244, 234, 213, 0.02);
+}
+.timeline-block .crafts span.hot {
+  color: var(--gold);
+  border-color: var(--gold-deep);
+  background: rgba(201, 163, 90, 0.08);
+}
+
+.timeline-block .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 14px 18px;
+  border: 1px solid var(--gold-deep);
+  background: rgba(201, 163, 90, 0.06);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.timeline-block .badge .star { color: var(--red); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .timeline-block { grid-template-columns: 1fr; gap: 24px; padding: 48px 0; }
+}
+@media (max-width: 720px) {
+  .timeline-block { padding: 38px 0; gap: 18px; }
+  .timeline-block .years {
+    font-size: 56px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .timeline-block .years br { display: none; }
+  .timeline-block .years small {
+    margin-top: 0;
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    flex-basis: 100%;
+  }
+  .timeline-block .body p { font-size: 14.5px; }
+  .timeline-block .crafts span {
+    font-size: 9px;
+    padding: 6px 10px;
+    letter-spacing: 0.2em;
+  }
+  .timeline-block .badge {
+    font-size: 9.5px;
+    padding: 12px 14px;
+    letter-spacing: 0.22em;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}

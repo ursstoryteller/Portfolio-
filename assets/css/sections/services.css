@@ -1,0 +1,125 @@
+/* ================================================================
+   REEL 06 — SERVICES
+   Stacked rows on desktop, deliver-visible cards on mobile.
+   ================================================================ */
+.services {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.services .head { margin-bottom: 40px; }
+.services h2 {
+  font-family: var(--f-display);
+  font-size: clamp(40px, 8vw, 110px);
+  line-height: 0.88;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--cream);
+  max-width: 14ch;
+}
+.services h2 em {
+  font-family: var(--f-edit);
+  font-style: italic;
+  color: var(--gold);
+  text-transform: none;
+  font-weight: 500;
+}
+.services p.lead {
+  max-width: 42ch;
+  color: var(--cream-dim);
+  margin-top: 18px;
+  font-size: 15px;
+}
+
+.marquee-list {
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
+}
+
+.svc {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 34px 4px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.svc .num {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+.svc .name {
+  font-family: var(--f-display);
+  font-size: clamp(34px, 6vw, 80px);
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  transition: transform 0.5s, color 0.5s, letter-spacing 0.5s;
+}
+.svc:hover .name {
+  color: var(--gold);
+  transform: translateX(14px);
+  letter-spacing: 0.02em;
+}
+.svc .deliver {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-align: right;
+  max-width: 24ch;
+}
+
+.svc::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: right 0.6s cubic-bezier(.7, 0, .2, 1);
+}
+.svc:hover::after { right: 0; }
+
+@media (max-width: 1080px) {
+  .svc { grid-template-columns: 90px 1fr auto; gap: 20px; }
+  .svc .name { font-size: clamp(30px, 5.2vw, 64px); }
+}
+@media (max-width: 900px) {
+  .svc {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "num     name"
+      "deliver deliver";
+    gap: 6px 18px;
+    padding: 28px 2px;
+    align-items: baseline;
+  }
+  .svc .num     { grid-area: num; align-self: center; }
+  .svc .name    {
+    grid-area: name;
+    white-space: normal;
+    font-size: clamp(28px, 7vw, 44px);
+  }
+  .svc .deliver {
+    grid-area: deliver;
+    text-align: left;
+    max-width: 100%;
+    padding-top: 8px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+}
+@media (max-width: 720px) {
+  .marquee-list { margin-top: 38px; }
+  .svc { padding: 24px 2px; gap: 4px 14px; }
+  .svc .num { font-size: 10px; letter-spacing: 0.26em; }
+}
